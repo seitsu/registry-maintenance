@@ -27,6 +27,7 @@ GET https://status.registry.tld/maintenance?environment=production&start=2017-04
 
 Explanation of succesful response values:
 ```
+  uuid            [required] (string)   unique id for each maintenance, shouldn't be changed if maintenance gets postponed
   systems         [required] (array)    contains name, hostname and impact
     name          [required] (string)   name of affected system
     hostname      [required] (string)   affected maintained systems
@@ -34,7 +35,7 @@ Explanation of succesful response values:
   environment     [required] (string)   environment of affected maintained systems
   start           [required] (datetime) according ISO 8601 YYYY-MM-DDThh:mm:ssTZD
   end             [required] (datetime) according ISO 8601 YYYY-MM-DDThh:mm:ssTZD
-  reason          [required] (string)   'planned maintenance' or 'emergency maintenance'
+  reason          [required] (string)   free text why this maintenance is necessary, could be empty
   remark          [required] (string)   URL to detailed maintenance description or empty
   tlds            [required] (array)    affected top-level domains
   intervention    [required] (string)   'yes' or 'no' - if yes, please specify on the website where remarks link to 
