@@ -1,0 +1,55 @@
+{
+   "maintenance":[
+      {
+         "notification":{
+            "systems":[
+               {
+                  "name":"EPP",
+                  "hostname":"epp.registry.tld",
+                  "impact":"blackout"
+               }
+            ],
+            "environment":"production",
+            "start":"2017-04-30T06:00:00+00:00",
+            "reason":"planned maintenance",
+            "remark":"https://portal.registry.tld/maintenance-description-foobar",
+            "end":"2017-04-30T07:00:00+00:00",
+            "tlds":[
+               "barfoo",
+               "foobar"
+            ],
+            "intervention":"no"
+         }
+      },
+      {
+         "notification":{
+            "systems":[
+               {
+                  "name":"EPP",
+                  "hostname":"epp.registry.tld",
+                  "impact":"partial"
+               },
+               {
+                  "name":"WHOIS",
+                  "hostname":"whois.registry.tld",
+                  "impact":"partial"
+               },
+               {
+                  "name":"Portal",
+                  "hostname":"https://portal.registry.tld",
+                  "impact":"blackout"
+               }
+            ],
+            "environment":"production",
+            "start":"2017-06-15T04:30:00+00:00",
+            "reason":"planned maintenance",
+            "remark":"https://portal.registry.tld/maintenance-description-foobar",
+            "end":"2017-06-15T05:30:00+00:00",
+            "tlds":[
+               "foobar"
+            ],
+            "intervention":"yes"
+         }
+      }
+   ]
+}
