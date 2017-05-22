@@ -5,6 +5,14 @@ Registry Maintenance Notifications with JSON
 The goal is to create a machine-readable registry maintenance notification format to make things easier for domain name registrars to keep up with maintenance notices.
 
 ## Using
+
+#### Intro
+  * RESTful webservice on port 443 with JSON formatted response according [RFC 4627](https://www.ietf.org/rfc/rfc4627.txt)
+  * HTTP Response Code according [RFC 7231](https://tools.ietf.org/html/rfc7231) (200 succesful and 404 error)
+  * HTTP Header content-type: application/json
+
+#### Calling the service
+
 GET https://status.registry.tld/maintenance
 
 ```
