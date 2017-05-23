@@ -1,0 +1,6 @@
+.pro*
+*.bak
+_build/
+blib/
+
+

@@ -1,8 +1,3 @@
 {
-  "maintenance":[
-    {
-      "code":"NO_RESULT",
-      "error":"No maintenance notifications found in this timeframe"
-    }
-  ]
+  "error":"NO_RESULT"
 }

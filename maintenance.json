@@ -1,63 +1,57 @@
 {
-   "maintenance":[
-      {
-         "notification":{
-            "id":"a2911d84-3f20-11e7-a919-92ebcb67fe33",
-            "systems":[
-               {
-                  "name":"EPP",
-                  "host":"epp.registry.tld",
-                  "impact":"blackout"
-               }
-            ],
-            "environment":"production",
-            "start":"2017-04-30T06:00:00+00:00",
-            "reason":"This is a planned maintenance. We will have to restart th EPP server.",
-            "remark":"https://portal.registry.tld/maintenance-description-foobar",
-            "end":"2017-04-30T07:00:00+00:00",
-            "tlds":[
-               "barfoo",
-               "foobar"
-            ],
-            "intervention":{
-               "connection": false,
-               "implementation": false
-            }
-         }
-      },
-      {
-         "notification":{
-            "id":"a2912234-3f20-11e7-a919-92ebcb67fe33",
-            "systems":[
-               {
-                  "name":"EPP",
-                  "host":"epp.registry.tld",
-                  "impact":"partial"
-               },
-               {
-                  "name":"WHOIS",
-                  "host":"whois.registry.tld",
-                  "impact":"partial"
-               },
-               {
-                  "name":"Portal",
-                  "host":"https://portal.registry.tld",
-                  "impact":"blackout"
-               }
-            ],
-            "environment":"production",
-            "start":"2017-06-15T04:30:00+00:00",
-            "reason":"We will do some tweaks, while doing the portal is offline.",
-            "remark":"https://portal.registry.tld/maintenance-description-foobar",
-            "end":"2017-06-15T05:30:00+00:00",
-            "tlds":[
-               "foobar"
-            ],
-            "intervention":{
-               "connection": false,
-               "implementation": true
-            }
-         }
+  "notifications":[
+    {
+      "id":"a2911d84-3f20-11e7-a919-92ebcb67fe33",
+      "systems":[
+        {
+          "name":"EPP",
+          "host":"epp.registry.tld",
+          "impact":"blackout"
+        }
+      ],
+      "environment":"production",
+      "start":"2017-04-30T06:00:00+00:00",
+      "reason":"This is a planned maintenance. We will have to restart th EPP server.",
+      "remark":"https://portal.registry.tld/maintenance-description-foobar",
+      "end":"2017-04-30T07:00:00+00:00",
+      "tlds":[
+        "barfoo",
+        "foobar"
+      ],
+      "intervention":{
+        "connection": false,
+        "implementation": false
       }
-   ]
+    },
+    {
+      "id":"a2912234-3f20-11e7-a919-92ebcb67fe33",
+      "systems":[
+        {
+          "name":"EPP",
+          "host":"epp.registry.tld",
+          "impact":"partial"
+        },
+        {
+          "name":"WHOIS",
+          "host":"whois.registry.tld",
+          "impact":"partial"
+        },
+        {
+          "name":"Portal",
+          "host":"https://portal.registry.tld",
+          "impact":"blackout"
+        }
+      ],
+      "environment":"production",
+      "start":"2017-06-15T04:30:00+00:00",
+      "reason":"We will do some tweaks, while doing the portal is offline.",
+      "remark":"https://portal.registry.tld/maintenance-description-foobar",
+      "end":"2017-06-15T05:30:00+00:00",
+      "tlds":["foobar"],
+      "intervention":{
+        "connection": false,
+        "implementation": true
+      }
+    }
+  ]
 }

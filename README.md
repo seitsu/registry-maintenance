@@ -27,29 +27,30 @@ GET https://status.registry.tld/maintenance?environment=production&start=2017-04
 
 Explanation of successful response values - HTTP Response Code 200:
 ```
-  id               [required] (string)   unique id for each maintenance, shouldn't be changed if maintenance gets postponed
-  systems          [required] (array)    contains name, host and impact
-    name           [required] (string)   name of affected system
-    host           [required] (string)   affected maintained systems (host or ip)
-    impact         [required] (string)   impact level per affected system; values are 'partial' or 'blackout'
-  environment      [required] (string)   environment of affected maintained systems
-  start            [required] (datetime) according ISO 8601 YYYY-MM-DDThh:mm:ssTZD
-  end              [required] (datetime) according ISO 8601 YYYY-MM-DDThh:mm:ssTZD
-  reason           [required] (string)   free text why this maintenance is necessary, could be empty
-  remark           [required] (string)   URL to detailed maintenance description or empty
-  tlds             [required] (array)    affected top-level domains
-  intervention     [required] (array)    contains connection and implementation
-    connection     [required] (boolean)  true or false - if registrar needs to do something connection related
-    implementation [required] (boolean)  true or false - if registrar needs to change their implementation
+  notification       [optional] (array)   contains a single maintenance notification
+    id               [required] (string)   unique id for each maintenance, shouldn't be changed if maintenance gets postponed
+    systems          [required] (array)    contains name, host and impact
+      name           [required] (string)   name of affected system
+      host           [required] (string)   affected maintained systems (host or ip)
+      impact         [required] (string)   impact level per affected system; values are 'partial' or 'blackout'
+    environment      [required] (string)   environment of affected maintained systems
+    start            [required] (datetime) according ISO 8601 YYYY-MM-DDThh:mm:ssTZD
+    end              [required] (datetime) according ISO 8601 YYYY-MM-DDThh:mm:ssTZD
+    reason           [required] (string)   free text why this maintenance is necessary, could be empty
+    remark           [required] (string)   URL to detailed maintenance description or empty
+    tlds             [required] (array)    affected top-level domains
+    intervention     [required] (array)    contains connection and implementation
+      connection     [required] (boolean)  true or false - if registrar needs to do something connection related
+      implementation [required] (boolean)  true or false - if registrar needs to change their implementation
     
 ```
 
-#### Error response according [error.json] and [error-schema.json]
+#### Error response according [error.json]
 
 Explanation of error response values:
 ```
-  code            [required] (string)  'NO_RESULT', 'WRONG_VALUE_ENVIRONMENT', 'WRONG_VALUE_START_DATE' or 'WRONG_VALUE_END_DATE'
-  error           [required] (string)  explanation of the error code
+  error            [required] (string)  'NO_RESULT', 'WRONG_VALUE_ENVIRONMENT', 'WRONG_VALUE_START_DATE' or 'WRONG_VALUE_END_DATE'
+
 ```
 
 Error messages - HTTP Response Code 400 bad request or 404 error:
@@ -69,4 +70,3 @@ This is free and unencumbered software released into the public domain. For more
 [maintenance.json]: /maintenance.json
 [maintenance-schema.json]: /maintenance-schema.json
 [error.json]: /error.json
-[error-schema.json]: /error-schema.json
