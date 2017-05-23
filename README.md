@@ -1,33 +1,30 @@
-Registry Maintenance Notifications with JSON
-=================
+## Machine-readable Domain Name Registry Maintenance Notifications
 
-## The Goal
-The goal is to create a machine-readable registry maintenance notification format to make things easier for domain name registrars to keep up with maintenance notices.
+### The Goal
+The goal is to create a machine-readable domain name registry maintenance notification format to make things easier for domain name registrars to keep up with maintenance notices.
 
-## Using
+### Using it
 
 #### Intro
   * RESTful webservice on port 443 with JSON formatted response according [RFC 7159](https://tools.ietf.org/html/rfc7159)
-  * HTTP Response Code according [RFC 7231](https://tools.ietf.org/html/rfc7231) (200 successful, 400 bad request and 404 error)
-  * HTTP Header content-type: application/json
+  * HTTP Response Code according [RFC 7231](https://tools.ietf.org/html/rfc7231) (200 successful, 400 bad request or 404 error)
+  * HTTP Response Header accordng [RFC 2616](https://tools.ietf.org/html/rfc2616#section-14.17) (content-type: application/json)
 
 #### Calling the service
-
-GET https://status.registry.tld/maintenance
-
-```
 GET https://status.registry.tld/maintenance?environment=production&start=2017-04-01&end=2017-06-30
 
-  environment     [optional] (string) 'production', 'test', 'staging' or 'all' (default: production)
-  start           [optional] (date)   according ISO 8601 YYYY-MM-DD in UTC (default: today)
-  end             [optional] (date)   according ISO 8601 YYYY-MM-DD in UTC (default: today + 3 months)
+Available arguments to call the service:
+```
+  environment        [optional] (string)   'production', 'test', 'staging' or 'all' (default: production)
+  start              [optional] (date)     according ISO 8601 YYYY-MM-DD in UTC (default: today)
+  end                [optional] (date)     according ISO 8601 YYYY-MM-DD in UTC (default: today + 3 months)
 ```
 
 #### Successful response according [maintenance.json] and [maintenance-schema.json]
 
 Explanation of successful response values - HTTP Response Code 200:
 ```
-  notification       [optional] (array)   contains a single maintenance notification
+  notification       [optional] (array)    contains a single maintenance notification
     id               [required] (string)   unique id for each maintenance, shouldn't be changed if maintenance gets postponed
     systems          [required] (array)    contains name, host and impact
       name           [required] (string)   name of affected system
@@ -42,15 +39,13 @@ Explanation of successful response values - HTTP Response Code 200:
     intervention     [required] (array)    contains connection and implementation
       connection     [required] (boolean)  true or false - if registrar needs to do something connection related
       implementation [required] (boolean)  true or false - if registrar needs to change their implementation
-    
 ```
 
-#### Error response according [error.json]
+#### Error response according [error.json] and [maintenance-schema.json]
 
 Explanation of error response values:
 ```
-  error            [required] (string)  'NO_RESULT', 'WRONG_VALUE_ENVIRONMENT', 'WRONG_VALUE_START_DATE' or 'WRONG_VALUE_END_DATE'
-
+  error              [required] (string)   'NO_RESULT', 'WRONG_VALUE_ENVIRONMENT', 'WRONG_VALUE_START_DATE' or 'WRONG_VALUE_END_DATE'
 ```
 
 Error messages - HTTP Response Code 400 bad request or 404 error:
@@ -60,11 +55,11 @@ Error messages - HTTP Response Code 400 bad request or 404 error:
   400   WRONG_VALUE_START_DATE    Given start date does not exist or before end date
   400   WRONG_VALUE_END_DATE      Given end date does not exist or before start date
 ```
-## Contributing
+### Contributing
 If you'd like to contribute, please go ahead.
 
-## License
-This is free and unencumbered software released into the public domain. For more info, read the [LICENSE] file distributed
+### License
+This is free and unencumbered software released into the public domain. For more info, please read the [LICENSE] file distributed.
 
 [license]: /LICENSE
 [maintenance.json]: /maintenance.json
