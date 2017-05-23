@@ -52,7 +52,7 @@ Explanation of error response values:
   error           [required] (string)  explanation of the error code
 ```
 
-Error messages by code
+Error messages - HTTP Response Code 400 bad request or 404 error:
 ```
   404   NO_RESULT                 No maintenance notifications found in this timeframe
   400   WRONG_VALUE_ENVIRONMENT   Given environment does not exist
