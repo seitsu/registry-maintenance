@@ -2,11 +2,11 @@
    "maintenance":[
       {
          "notification":{
-            "uuid":"a2911d84-3f20-11e7-a919-92ebcb67fe33",
+            "id":"a2911d84-3f20-11e7-a919-92ebcb67fe33",
             "systems":[
                {
                   "name":"EPP",
-                  "hostname":"epp.registry.tld",
+                  "host":"epp.registry.tld",
                   "impact":"blackout"
                }
             ],
@@ -19,26 +19,29 @@
                "barfoo",
                "foobar"
             ],
-            "intervention":"no"
+            "intervention":{
+               "connection": false,
+               "implementation": false
+            }
          }
       },
       {
          "notification":{
-            "uuid":"a2912234-3f20-11e7-a919-92ebcb67fe33",
+            "id":"a2912234-3f20-11e7-a919-92ebcb67fe33",
             "systems":[
                {
                   "name":"EPP",
-                  "hostname":"epp.registry.tld",
+                  "host":"epp.registry.tld",
                   "impact":"partial"
                },
                {
                   "name":"WHOIS",
-                  "hostname":"whois.registry.tld",
+                  "host":"whois.registry.tld",
                   "impact":"partial"
                },
                {
                   "name":"Portal",
-                  "hostname":"https://portal.registry.tld",
+                  "host":"https://portal.registry.tld",
                   "impact":"blackout"
                }
             ],
@@ -50,7 +53,10 @@
             "tlds":[
                "foobar"
             ],
-            "intervention":"yes"
+            "intervention":{
+               "connection": false,
+               "implementation": true
+            }
          }
       }
    ]

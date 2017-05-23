@@ -1,0 +1,166 @@
+
+
+    {
+        "$schema": "",
+        "definitions": {},
+        "id": "",
+        "title":"maintenance exchange format",
+        "maxProperties": 1,
+        "minProperties": 1,
+        "properties": {
+            "maintenance": {
+                "id": "/properties/maintenance",
+                "items": {
+                    "id": "/properties/maintenance/items",
+                    "minProperties": 1,
+                    "properties": {
+                        "notification": {
+                            "id": "/properties/maintenance/items/properties/notification",
+                            "maxProperties": 8,
+                            "minProperties": 8,
+                            "properties": {
+                                "end": {
+                                    "description": "UTC time in DateTime format",
+                                    "id": "/properties/maintenance/items/properties/notification/properties/end",
+                                    "pattern": "^[0-9]{4}\\-[0-9]{2}\\-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$",
+                                    "title": "End of maintenance",
+                                    "type": "string"
+                                },
+                                "environment": {
+                                    "default":"production",
+                                    "description": "either \"production\" or \"test\"",
+                                    "id": "/properties/maintenance/items/properties/notification/properties/environment",
+                                    "title": "Environment",
+                                    "type": "string",
+                                    "enum": [
+                                    	"test",
+                                    	"production"
+                                    ]
+                                },
+                                "id": {
+                                    "description": "an uuid as unique identifier",
+                                    "id": "/properties/maintenance/items/properties/notification/properties/id",
+                                    "title": "Unique Identifier",
+                                    "type": "string",
+                                    "pattern":"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+                                },
+                                "intervention": {
+                                    "id": "/properties/maintenance/items/properties/notification/properties/intervention",
+                                    "maxProperties": 2,
+                                    "minProperties": 2,
+                                    "properties": {
+                                        "connection": {
+                                            "default": false,
+                                            "description": "if a registrar needs to review any connection related changes",
+                                            "id": "/properties/maintenance/items/properties/notification/properties/intervention/properties/connection",
+                                            "title": "Connection related changes",
+                                            "type": "boolean"
+                                        },
+                                        "implementation": {
+                                            "default": false,
+                                            "description": "if a registrar needs to review implementational changes",
+                                            "id": "/properties/maintenance/items/properties/notification/properties/intervention/properties/implementation",
+                                            "title": "Implementation changes",
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "required": [
+                                        "implementation",
+                                        "connection"
+                                    ],
+                                    "type": "object"
+                                },
+                                "reason": {
+                                    "id": "/properties/maintenance/items/properties/notification/properties/reason",
+                                    "title": "Reason of maintenance",
+                                    "type": "string",
+                                    "description":"free text why this maintenance is necessary"
+                                },
+                                "remark": {
+                                    "id": "/properties/maintenance/items/properties/notification/properties/remark",
+                                    "description": "url to detailed information about the maintenance and its changes",
+                                    "title": "Registry URL to remark",
+                                    "type": "string"
+                                },
+                                "start": {
+                                    "description": "UTC time in DateTime format",
+                                    "id": "/properties/maintenance/items/properties/notification/properties/start",
+                                    "pattern": "^[0-9]{4}\\-[0-9]{2}\\-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$",
+                                    "title": "Start of maintenance",
+                                    "type": "string"
+                                },
+                                "systems": {
+                                    "id": "/properties/maintenance/items/properties/notification/properties/systems",
+                                    "items": {
+                                        "id": "/properties/maintenance/items/properties/notification/properties/systems/items",
+                                        "maxProperties": 3,
+                                        "minProperties": 2,
+                                        "properties": {
+                                            "host": {
+                                                "id": "/properties/maintenance/items/properties/notification/properties/systems/items/properties/hostname",
+                                                "title": "Hostname or IP of affected system",
+                                                "type": "string"
+                                            },
+                                            "impact": {
+                                                "default": "blackout",
+                                                "description": "one of \"blackout\", \"partial\", \"bad risk\", \"intermittent connection loss\" TBD",
+                                                "id": "/properties/maintenance/items/properties/notification/properties/systems/items/properties/impact",
+                                                "title": "Impact to system",
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "id": "/properties/maintenance/items/properties/notification/properties/systems/items/properties/name",
+                                                "title": "Descriptive name of affected system",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": [
+                                            "impact",
+                                            "name",
+                                            "host"
+                                        ],
+                                        "type": "object"
+                                    },
+                                    "minItems": 1,
+                                    "type": "array"
+                                },
+                                "tlds": {
+                                    "id": "/properties/maintenance/items/properties/notification/properties/tlds",
+                                    "items": {
+                                        "id": "/properties/maintenance/items/properties/notification/properties/tlds/items",
+                                        "title": "Affected TLDs",
+                                        "type": "string"
+                                    },
+                                    "minItems": 1,
+                                    "type": "array"
+                                }
+                            },
+                            "required": [
+                                "id",
+                                "remark",
+                                "end",
+                                "tlds",
+                                "system",
+                                "environment",
+                                "start",
+                                "reason",
+                                "intervention"
+                            ],
+                            "type": "object"
+                        }
+                    },
+                    "required": [
+                        "notification"
+                    ],
+                    "type": "object"
+                },
+                "minItems": 1,
+                "type": "array"
+            }
+        },
+        "required": [
+            "maintenance"
+        ],
+        "type": "object"
+    }
+
