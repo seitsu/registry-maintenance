@@ -20,6 +20,20 @@ Available arguments to call the service:
   end                [optional] (date)     according ISO 8601 YYYY-MM-DD in UTC (default: today + 3 months)
 ```
 
+#### Successful response HTTP header
+
+```
+HTTP/1.1 200 OK
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: Mon, 01 Jan 1990 00:00:00 GMT
+Content-Type: application/json; charset=UTF-8
+Last-Modified: Tue, 24 Jan 2017 08:43:20 GMT
+Date: Wed, 31 May 2017 17:46:48 GMT
+```
+
+Expires, Date and Last-Modified in HTTP response header are in [RFC 1123](https://tools.ietf.org/html/rfc1123) format (e.g. Fri, 06 May 2016 05:48:37 GMT)
+
 #### Successful response according [maintenance.json] and [maintenance-schema.json]
 
 Explanation of successful response values - HTTP Response Code 200:
@@ -55,6 +69,32 @@ Error messages - HTTP Response Code 204 no content or 400 bad request:
   400   WRONG_VALUE_START_DATE    Given start date does not exist or before end date
   400   WRONG_VALUE_END_DATE      Given end date does not exist or before start date
 ```
+
+#### Error response HTTP header
+
+204 no content
+```
+HTTP/1.1 200 OK
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: Mon, 01 Jan 1990 00:00:00 GMT
+Content-Type: application/json; charset=UTF-8
+Last-Modified: Tue, 24 Jan 2017 08:43:20 GMT
+Date: Wed, 31 May 2017 17:46:48 GMT
+```
+
+400 bad request
+```
+HTTP/1.1 400 Bad Request 
+Cache-Control: private, max-age=0
+Expires: Mon, 01 Jan 1990 00:00:00 GMT
+Content-Type: application/json; charset=UTF-8
+Last-Modified: Tue, 24 Jan 2017 08:43:20 GMT
+Date: Wed, 31 May 2017 17:46:48 GMT
+```
+
+Expires, Date and Last-Modified in HTTP response header are in [RFC 1123](https://tools.ietf.org/html/rfc1123) format (e.g. Fri, 06 May 2016 05:48:37 GMT)
+
 ### Contributing
 If you'd like to contribute, please go ahead.
 
