@@ -7,7 +7,7 @@ The goal is to create a machine-readable domain name registry maintenance notifi
 
 #### Intro
   * RESTful webservice on port 443 with JSON formatted response according [RFC 7159](https://tools.ietf.org/html/rfc7159)
-  * HTTP Response Code according [RFC 7231](https://tools.ietf.org/html/rfc7231) (200 successful, 400 bad request or 404 error)
+  * HTTP Response Code according [RFC 7231](https://tools.ietf.org/html/rfc7231) (200 successful, 204 no content or 400 bad request)
   * HTTP Response Header accordng [RFC 2616](https://tools.ietf.org/html/rfc2616#section-14.17) (content-type: application/json)
 
 #### Calling the service
@@ -48,9 +48,9 @@ Explanation of error response values:
   error              [required] (string)   'NO_RESULT', 'WRONG_VALUE_ENVIRONMENT', 'WRONG_VALUE_START_DATE' or 'WRONG_VALUE_END_DATE'
 ```
 
-Error messages - HTTP Response Code 400 bad request or 404 error:
+Error messages - HTTP Response Code 204 no content or 400 bad request:
 ```
-  404   NO_RESULT                 No maintenance notifications found in this timeframe
+  204   NO_RESULT                 No maintenance notifications found in this timeframe
   400   WRONG_VALUE_ENVIRONMENT   Given environment does not exist
   400   WRONG_VALUE_START_DATE    Given start date does not exist or before end date
   400   WRONG_VALUE_END_DATE      Given end date does not exist or before start date
