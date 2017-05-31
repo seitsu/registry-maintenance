@@ -8,10 +8,10 @@ The goal is to create a machine-readable domain name registry maintenance notifi
 #### Intro
   * RESTful webservice on port 443 with JSON formatted response according [RFC 7159](https://tools.ietf.org/html/rfc7159)
   * HTTP Response Code according [RFC 7231](https://tools.ietf.org/html/rfc7231) (200 successful, 204 no content or 400 bad request)
-  * HTTP Response Header accordng [RFC 2616](https://tools.ietf.org/html/rfc2616#section-14.17) (content-type: application/json)
+  * HTTP Response Header according [RFC 2616](https://tools.ietf.org/html/rfc2616#section-14.17) (content-type: application/json)
 
 #### Calling the service
-GET https://status.registry.tld/maintenance?environment=production&start=2017-04-01&end=2017-06-30
+GET https://status.registry.tld/maintenances?environment=production&start=2017-04-01&end=2017-06-30
 
 Available arguments to call the service:
 ```
@@ -24,7 +24,7 @@ Available arguments to call the service:
 
 Explanation of successful response values - HTTP Response Code 200:
 ```
-  notification       [optional] (array)    contains a single maintenance notification
+  notifications      [optional] (array)    contains a single maintenance notification
     id               [required] (string)   unique id for each maintenance, shouldn't be changed if maintenance gets postponed
     systems          [required] (array)    contains name, host and impact
       name           [required] (string)   name of affected system
